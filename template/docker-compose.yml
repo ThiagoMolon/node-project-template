@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./Backend
+    container_name: template-backend
+    ports:
+      - "3001:3001"
+      - "9229:9229"   # porta para debug do Node.js (inspect)
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules   # evita sobrescrever node_modules do container
+    environment:
+      - NODE_ENV=development
+    command: npm run dev   # já está no Dockerfile, mas pode ser redundante
+
+  frontend:
+    build: ./frontend
+    container_name: template-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true   # para hot-reload em alguns sistemas (Windows)
+    depends_on:
+      - backend

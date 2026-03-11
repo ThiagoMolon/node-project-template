@@ -1,4 +1,5 @@
 import { useBackendStatus } from '../hooks/useBackendStatus';
+import Vine from '../assets/vite' ;
 
 function Home() {
   const backendStatus = useBackendStatus();
@@ -7,7 +8,7 @@ function Home() {
     <div>
       <h1>Frontend React</h1>
       <p>Status do backend: {backendStatus}</p>
-      <p>dddddddddddddddddddddddddddddddddddddd</p>
+      <Vine />
     </div>
   );
 }

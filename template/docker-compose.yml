@@ -7,7 +7,7 @@ services:
       - "9229:9229"   # porta para debug do Node.js (inspect)
     volumes:
       - ./Backend:/app
-      - /app/node_modules   # evita sobrescrever node_modules do container
+      # - /app/node_modules   # evita sobrescrever node_modules do container
     environment:
       - NODE_ENV=development
     command: npm run dev   # já está no Dockerfile, mas pode ser redundante
@@ -19,7 +19,7 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend:/app
-      - /app/node_modules
+        # - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true   # para hot-reload em alguns sistemas (Windows)
     depends_on:
